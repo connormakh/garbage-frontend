@@ -8,6 +8,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+    title: 'Trash',
+    icon: 'nb-trash',
+    link: '/pages/trash',
+    home: true,
+  },
+  {
     title: 'FEATURES',
     group: true,
   },
