@@ -6,6 +6,7 @@ import { AngularEchartsModule } from 'ngx-echarts';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { TrashComponent } from './trash.component';
+import {TrashCardComponent} from "./trash-card/trash-card.component";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { TrashComponent } from './trash.component';
     AngularEchartsModule,
   ],
   declarations: [
-    TrashComponent
+    TrashComponent,
+    TrashCardComponent
   ],
 })
 export class TrashModule { }

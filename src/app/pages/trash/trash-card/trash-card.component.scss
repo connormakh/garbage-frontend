@@ -3,16 +3,27 @@
   height: 150px;
   width: 100px;
   position: relative;
-  border-style: none solid solid solid;
   border-width: 10px;
+  //border-style: none solid solid solid;
   border-color: lightgray;
   border-radius: 10px;
+  background: url("../../../../assets/images/trash-o.svg");
+  -webkit-background-size: cover; /* For WebKit*/
+  -moz-background-size: cover;    /* Mozilla*/
+  -o-background-size: cover;      /* Opera*/
+  background-size: cover;         /* Generic*/
+  background-position: center;
+
 }
 
 .water {
-  width: 100%;
-  height: 10%;
-  background-color: skyblue;
+  opacity:0.8;
+  width: 76%;
+  height: 60%; // max 60%
+  left: 12px;
+  background-color: lightgreen;
+
+
   position: absolute;
-  bottom: 0;
+  bottom: 21px;
 }
