@@ -1,29 +1,59 @@
-.glass {
-  margin: 30px auto;
-  height: 150px;
-  width: 100px;
-  position: relative;
-  border-width: 10px;
-  //border-style: none solid solid solid;
-  border-color: lightgray;
-  border-radius: 10px;
-  background: url("../../../../assets/images/trash-o.svg");
-  -webkit-background-size: cover; /* For WebKit*/
-  -moz-background-size: cover;    /* Mozilla*/
-  -o-background-size: cover;      /* Opera*/
-  background-size: cover;         /* Generic*/
-  background-position: center;
-
-}
-
-.water {
-  opacity:0.8;
-  width: 76%;
-  height: 60%; // max 60%
-  left: 12px;
-  background-color: lightgreen;
+@import '../../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/bootstrap/breakpoints';
 
 
-  position: absolute;
-  bottom: 21px;
+@include nb-install-component() {
+
+  .glass {
+    margin: 30px auto;
+    height: 150px;
+    width: 100px;
+    position: relative;
+    border-width: 10px;
+    //border-style: none solid solid solid;
+    border-color: lightgray;
+    border-radius: 10px;
+    background: url("../../../../assets/images/trash-o.svg");
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         /* Generic*/
+    background-position: center;
+
+  }
+
+  .water {
+    opacity:0.8;
+    width: 76%;
+    height: 60%; // max 60%
+    left: 12px;
+    background-color: lightgreen;
+
+
+    position: absolute;
+    bottom: 21px;
+  }
+
+
+  nb-card-body {
+    padding: 0 1.25rem 1.25rem 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .container-title {
+    margin-bottom: 0.25rem;
+  }
+
+  .size-container {
+    margin: 1.25rem 0 0 1.25rem;
+  }
+
+  .subheader {
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: nb-theme(font-weight-bolder);
+    color: nb-theme(color-fg-heading);
+  }
 }
