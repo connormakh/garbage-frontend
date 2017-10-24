@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {TrashComponent} from "./trash/trash.component";
+import {AuthGuard} from "../@core/guards/auth.guard";
 
 const routes: Routes = [{
   path: '',
@@ -15,6 +16,8 @@ const routes: Routes = [{
     {
       path: 'trash',
       component: TrashComponent,
+      // canActivate: [AuthGuard]
+
     },
     {
     path: 'ui-features',
