@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NbMenuService, NbSidebarService } from '@nebular/theme';
 import { UserService } from '../../../@core/data/users.service';
 import { AnalyticsService } from '../../../@core/utils/analytics.service';
+import {StorageService} from "../../../@core/services/storage.service";
+import {User} from "../../../@core/models/user";
 
 @Component({
   selector: 'ngx-header',
@@ -14,19 +16,20 @@ export class HeaderComponent implements OnInit {
 
   @Input() position: string = 'normal';
 
-  user: any;
+  user: User;
 
   userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private userService: UserService,
-              private analyticsService: AnalyticsService) {
+              private analyticsService: AnalyticsService,
+              private storageService: StorageService) {
   }
 
   ngOnInit() {
-    this.userService.getUsers()
-      .subscribe((users: any) => this.user = users.nick);
+    this.user = this.storageService.read<User>("currentUser")
+    console.log("currentUser", this.user)
   }
 
   toggleSidebar(): boolean {

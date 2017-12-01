@@ -5,6 +5,8 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import {Headers, Http} from "@angular/http";
 import {TrashCan} from "../../pages/trash/trash-card/trash-can";
+import {User} from "../models/user";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class WebService {
@@ -20,6 +22,16 @@ export class WebService {
       .then(response => response.json().data as TrashCan[])
       .catch(this.handleError)
   }
+
+  getCurrentLocation(lat,lng): Observable<any> {
+    return this.http.get("http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"&sensor=true")
+      .map(response => response.json())
+      .catch(error => {
+        console.log(error);
+        return Observable.throw(error.json());
+      });
+  }
+
 
   // ERROR HANDLING
 

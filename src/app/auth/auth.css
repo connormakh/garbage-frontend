@@ -1,41 +1,74 @@
-/**
- * @license
- * Copyright Akveo. All Rights Reserved.
- * Licensed under the MIT License. See License.txt in the project root for license information.
- */
-@media (max-width: 550px) {
-  :host /deep/ .accept-group {
-    font-size: 12px;
-    padding: 0; } }
-:host /deep/ form {
-  width: 100%; }
-:host /deep/ .alert {
-  text-align: center; }
-:host /deep/ .title {
-  margin-bottom: 0.75rem;
-  text-align: center; }
-:host /deep/ .sub-title {
-  margin-bottom: 2rem;
-  text-align: center; }
-:host /deep/ .checkbox {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  font-weight: normal; }
-:host /deep/ .form-group.accept-group {
-  display: flex;
-  justify-content: space-between;
-  margin: 2rem 0; }
-  :host /deep/ .form-group.accept-group .forgot-password {
-    line-height: 2; }
-:host /deep/ .links {
-  text-align: center;
-  margin-top: 1.75rem; }
-  :host /deep/ .links .socials {
-    margin: 1.5rem 0 2.5rem; }
-  :host /deep/ .links .socials a {
-    font-size: 2rem;
-    margin: 0 1rem;
-    text-decoration: none; }
+/*
+Error: File to import not found or unreadable: ~@nebular/theme/styles/theming.
+        on line 2 of ../@theme/styles/themes.scss
+        from line 6 of auth.scss
 
-/*# sourceMappingURL=auth.css.map */
+1: /**
+2:  * @license
+3:  * Copyright Akveo. All Rights Reserved.
+4:  * Licensed under the MIT License. See License.txt in the project root for license information.
+5:  *\/
+6: @import '../@theme/styles/themes';
+7: @import '~bootstrap/scss/mixins/breakpoints';
+
+Backtrace:
+../@theme/styles/themes.scss:2
+auth.scss:6
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:67:in `rescue in import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:45:in `import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:28:in `imported_file'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:37:in `css_import?'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:313:in `visit_import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:328:in `block (2 levels) in visit_import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:328:in `map'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:328:in `block in visit_import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:88:in `block in with_import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:88:in `with_import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:325:in `visit_import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:159:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/plugin.rb:82:in `update_stylesheets'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:51:in `process_result'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/exec/base.rb:52:in `parse'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/exec/base.rb:19:in `parse!'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/bin/scss:13:in `<top (required)>'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/bin/scss:23:in `load'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/bin/scss:23:in `<main>'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/bin/ruby_executable_hooks:15:in `eval'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: ~@nebular/theme/styles/theming.\A         on line 2 of ../@theme/styles/themes.scss\A         from line 6 of auth.scss\A \A 1: /**\A 2:  * @license\A 3:  * Copyright Akveo. All Rights Reserved.\A 4:  * Licensed under the MIT License. See License.txt in the project root for license information.\A 5:  */\A 6: @import '../@theme/styles/themes';\A 7: @import '~bootstrap/scss/mixins/breakpoints';"; }

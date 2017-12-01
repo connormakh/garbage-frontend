@@ -3,7 +3,10 @@
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
-
+@import '../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import "../@theme/layouts/sample/sample.layout";
+@import '~@nebular/theme/styles/global/bootstrap/breakpoints';
 :host /deep/ {
   // TODO rewrite when develop responsive
   @media (max-width: 550px) {

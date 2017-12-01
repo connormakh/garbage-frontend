@@ -16,6 +16,7 @@ const PAGES_COMPONENTS = [
     ThemeModule,
     DashboardModule,
     TrashModule
+
   ],
   declarations: [
     ...PAGES_COMPONENTS,

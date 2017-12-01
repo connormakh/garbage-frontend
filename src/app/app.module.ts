@@ -15,6 +15,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AuthGuard} from "./@core/guards/auth.guard";
+import {WebService} from "./@core/utils/web.service";
+import {LoginComponent} from "./auth/login/login.component";
+import {SignupComponent} from "./auth/signup/signup.component";
+import {AuthModule} from "./auth/auth.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +35,8 @@ import {AuthGuard} from "./@core/guards/auth.guard";
   bootstrap: [AppComponent],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
-    AuthGuard
+    AuthGuard,
+    WebService
   ],
 })
 export class AppModule {
