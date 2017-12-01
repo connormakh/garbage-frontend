@@ -12,6 +12,7 @@
   class="header-container"
   [class.right]="position === 'normal'"
   [class.left]="position === 'inverse'">
+  <span class="nb-power"></span>
   <nb-action icon="nb-power" class="toggle-layout" (click)="logout()"></nb-action>
   <nb-action>
     <nb-user [menu]="userMenu" [name]="user.user.name" [picture]="user?.picture"></nb-user>

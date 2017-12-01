@@ -3,6 +3,7 @@ import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import {StorageService} from "./storage.service";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthenticationService {
@@ -48,5 +49,6 @@ export class AuthenticationService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+
   }
 }
