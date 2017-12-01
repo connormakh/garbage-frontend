@@ -12,9 +12,8 @@
   class="header-container"
   [class.right]="position === 'normal'"
   [class.left]="position === 'inverse'">
-  <nb-action icon="nb-grid-b" class="toggle-layout" (click)="toggleSettings()"></nb-action>
+  <nb-action icon="nb-power" class="toggle-layout" (click)="logout()"></nb-action>
   <nb-action>
     <nb-user [menu]="userMenu" [name]="user.user.name" [picture]="user?.picture"></nb-user>
   </nb-action>
-  <nb-action class="control-item" disabled icon="nb-notifications"></nb-action>
 </nb-actions>

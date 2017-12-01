@@ -5,6 +5,8 @@ import { UserService } from '../../../@core/data/users.service';
 import { AnalyticsService } from '../../../@core/utils/analytics.service';
 import {StorageService} from "../../../@core/services/storage.service";
 import {User} from "../../../@core/models/user";
+import {AuthenticationService} from "../../../@core/services/authentication.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'ngx-header',
@@ -18,13 +20,16 @@ export class HeaderComponent implements OnInit {
 
   user: User;
 
-  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
-
+  userMenu = [
+    // { title: 'Profile' }, { title: 'Log out' }
+    ];
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private userService: UserService,
               private analyticsService: AnalyticsService,
-              private storageService: StorageService) {
+              private storageService: StorageService,
+              private authenticationService: AuthenticationService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -37,9 +42,9 @@ export class HeaderComponent implements OnInit {
     return false;
   }
 
-  toggleSettings(): boolean {
-    this.sidebarService.toggle(false, 'settings-sidebar');
-    return false;
+  logout(){
+    this.authenticationService.logout();
+    this.router.navigate(['']);
   }
 
   goToHome() {
