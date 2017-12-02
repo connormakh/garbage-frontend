@@ -5,6 +5,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ThemeModule } from '../@theme/theme.module';
 import {TrashModule} from "./trash/trash.module";
+import {LeafletComponent} from "./maps/leaflet/leaflet.component";
 
 const PAGES_COMPONENTS = [
   PagesComponent,

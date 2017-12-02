@@ -14,7 +14,7 @@ import { MapsRoutingModule, routedComponents } from './maps-routing.module';
     MapsRoutingModule,
     AngularEchartsModule,
   ],
-  exports: [],
+  exports: [...routedComponents],
   declarations: [
     ...routedComponents,
   ],
