@@ -6,6 +6,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { ThemeModule } from '../@theme/theme.module';
 import {TrashModule} from "./trash/trash.module";
 import {LeafletComponent} from "./maps/leaflet/leaflet.component";
+import {CompanyModule} from "./company/company.module";
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -16,7 +17,8 @@ const PAGES_COMPONENTS = [
     PagesRoutingModule,
     ThemeModule,
     DashboardModule,
-    TrashModule
+    TrashModule,
+    CompanyModule
 
   ],
   declarations: [

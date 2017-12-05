@@ -14,6 +14,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+    title: 'My Company',
+    icon: 'nb-compose',
+    link: '/pages/company',
+    home: true,
+  },
+  {
     title: 'FEATURES',
     group: true,
   },

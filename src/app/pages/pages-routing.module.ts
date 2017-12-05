@@ -5,6 +5,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {TrashComponent} from "./trash/trash.component";
 import {AuthGuard} from "../@core/guards/auth.guard";
+import {CompanyComponent} from "./company/company.component";
 
 const routes: Routes = [{
   path: '',
@@ -16,6 +17,12 @@ const routes: Routes = [{
     {
       path: 'trash',
       component: TrashComponent,
+      // canActivate: [AuthGuard]
+
+    },
+    {
+      path: 'company',
+      component: CompanyComponent,
       // canActivate: [AuthGuard]
 
     },
