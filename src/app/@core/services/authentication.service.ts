@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import {StorageService} from "./storage.service";
 import {Router} from "@angular/router";
+import {User} from "../models/user";
 
 @Injectable()
 export class AuthenticationService {
@@ -41,6 +42,24 @@ export class AuthenticationService {
           this.storageService.write("currentUser", user)
           // localStorage.setItem('currentUser', JSON.stringify(user));
         }
+
+        return user;
+      });
+  }
+
+  getCountryCoordinates() {
+    var loggedIn = this.storageService.read<User>("currentUser")
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+loggedIn+'&key=AIzaSyD0q5ip6CbYFgzcha-Io-8lBM78PmgmslE')
+      .map((response: Response) => {
+        let location = response.json().results[0].geometry.location;
+        // login successful if there's a jwt token in the response
+        let user = this.storageService.read<User>("currentUser")
+        user.country_coordinates.lat = location.lat
+        user.country_coordinates.lng = location.lng
+
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        this.storageService.write("currentUser", user)
+        // localStorage.setItem('currentUser', JSON.stringify(user));
 
         return user;
       });

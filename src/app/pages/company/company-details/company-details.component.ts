@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {User} from "../../../@core/models/user";
+import {StorageService} from "../../../@core/services/storage.service";
 
 @Component({
   selector: 'ngx-company-details',
   styleUrls: ['./company-details.component.scss'],
   templateUrl: './company-details.component.html',
 })
-export class CompanyDetailsComponent {
+export class CompanyDetailsComponent implements OnInit{
 
-  starRate: number = 2;
-  heartRate: number = 4;
+  private user: any = {}
+
+  constructor(private storageService: StorageService){}
+
+
+  ngOnInit() {
+    this.user = this.storageService.read<any>("currentUser")
+  }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthenticationService} from "../../@core/services/authentication.service";
 
 @Component({
   selector: 'ngx-components',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
     <router-outlet></router-outlet>
   `,
 })
-export class ComponentsComponent {
+export class ComponentsComponent{
+
+
 }

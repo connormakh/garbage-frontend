@@ -22,7 +22,7 @@
     "prepush": "npm run lint:ci"
   },
   "dependencies": {
-    "@agm/core": "1.0.0-beta.0",
+    "@agm/core": "^1.0.0-beta.0",
     "@angular/animations": "4.3.2",
     "@angular/common": "4.3.2",
     "@angular/compiler": "4.3.2",
@@ -43,6 +43,7 @@
     "chart.js": "2.5.0",
     "ckeditor": "4.6.2",
     "classlist.js": "1.1.20150312",
+    "compass": "^0.1.1",
     "core-js": "2.4.1",
     "d3": "4.8.0",
     "font-awesome": "4.7.0",
@@ -51,6 +52,7 @@
     "leaflet": "1.0.3",
     "nebular-icons": "1.0.6",
     "ng2-ckeditor": "1.1.6",
+    "ng2-opd-popup": "^1.1.21",
     "ng2-smart-table": "1.1.0",
     "ng2-tree": "2.0.0-alpha.5",
     "ngx-echarts": "1.2.2",

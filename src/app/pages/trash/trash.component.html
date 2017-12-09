@@ -1,19 +1,9 @@
 <div class="row">
+
   <div class="col-md-4" *ngFor="let trashCan of trashCans">
-    <ngx-trash-card [trashCan]=""></ngx-trash-card>
+    <ngx-trash-card [trashCan]="trashCan"></ngx-trash-card>
   </div>
-
   <div class="col-md-4">
-    <ngx-trash-card></ngx-trash-card>
-
-  </div>
-
-  <div class="col-md-4">
-    <ngx-trash-card></ngx-trash-card>
-
-  </div>
-
-  <div class="col-md-4">
-    <ngx-trash-card></ngx-trash-card>
+    <ngx-trash-request></ngx-trash-request>
   </div>
 </div>

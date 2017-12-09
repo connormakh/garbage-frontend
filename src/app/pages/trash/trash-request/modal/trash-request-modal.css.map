@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,OAAQ;EACN,MAAM,EAAE,KAAK",
+"sources": ["trash-request-modal.scss"],
+"names": [],
+"file": "trash-request-modal.css"
+}

@@ -1,0 +1,14 @@
+<div class="modal-header">
+  <span>{{ modalHeader }}</span>
+  <button class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <agm-map (mapClick)="chooseLocation($event)">
+    <agm-marker *ngIf="markerEnabled" [latitude]="marker.lat" [longitude]="marker.lng"></agm-marker>
+  </agm-map>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-md btn-primary" (click)="closeModal()">Save changes</button>
+</div>

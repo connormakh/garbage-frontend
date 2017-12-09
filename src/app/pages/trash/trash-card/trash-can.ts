@@ -5,4 +5,7 @@ export class TrashCan {
   id: number;
   name: String;
   location: Location;
+  volume: number;
+  height: number;
+  filled: number;
 }

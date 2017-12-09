@@ -10,10 +10,9 @@ import {TrashCan} from "./trash-card/trash-can";
 })
 
 export class TrashComponent implements OnInit{
-  trashCans: [TrashCan]
+  trashCans: TrashCan[] = []
 
   ngOnInit(): void {
-
   }
 
 }
