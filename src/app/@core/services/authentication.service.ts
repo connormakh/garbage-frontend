@@ -65,6 +65,18 @@ export class AuthenticationService {
       });
   }
 
+  requestBin(latitude: string, longitude: string, details: string) {
+    return this.http.post(this.url + 'garbage_request/new', JSON.stringify({ details: details, latitude: latitude, longitude: longitude }), this.authenticatedHeaders())
+      .map((response: Response) => {
+        return response;
+      });
+  }
+
+  authenticatedHeaders() {
+  var headers = new Headers({'Content-Type': 'application/json', 'x-access-token': this.storageService.read<User>("currentUser").token});
+  return new RequestOptions({ headers: headers });
+  }
+
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');

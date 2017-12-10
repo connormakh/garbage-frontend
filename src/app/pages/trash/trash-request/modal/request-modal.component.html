@@ -5,10 +5,13 @@
   </button>
 </div>
 <div class="modal-body">
-  <agm-map (mapClick)="chooseLocation($event)">
+  <agm-map (mapClick)="chooseLocation($event)" [latitude]="userLat" [longitude]="userLng">
     <agm-marker *ngIf="markerEnabled" [latitude]="marker.lat" [longitude]="marker.lng"></agm-marker>
   </agm-map>
+  <div class="input-group">
+    <input type="text" [(ngModel)]="locationDetails" placeholder="Location Details" class="form-control"/>
+  </div>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-md btn-primary" (click)="closeModal()">Save changes</button>
+  <button class="btn btn-md btn-primary" (click)="sendRequest()">Send Request</button>
 </div>

@@ -22,6 +22,6 @@ export class TrashRequestComponent implements OnInit{
   openMapPopup() {
     const activeModal = this.modalService.open(TrashRequestModalComponent, { size: 'lg', container: 'nb-layout' });
 
-    activeModal.componentInstance.modalHeader = 'Request new bin';  }
+    activeModal.componentInstance.modalHeader = 'Choose bin location (please be as specific as possible)';  }
 
 }
