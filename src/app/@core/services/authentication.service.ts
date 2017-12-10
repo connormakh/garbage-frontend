@@ -33,13 +33,14 @@ export class AuthenticationService {
   }
 
   signup(name: string, companyName: string, email: string, password: string, phone: string) {
-    return this.http.post(this.url + 'user/signup', JSON.stringify({ name: name, companyName: companyName, email: email, contact_number: phone, password: password }), this.options)
+    return this.http.post(this.url + 'user/signup', JSON.stringify({ name: name, company_name: companyName, email: email, contact_number: phone, password: password }), this.options)
       .map((response: Response) => {
         let user = response.json().data;
         // login successful if there's a jwt token in the response
         if (user && user.token) {
+          user.user.token = user.token
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          this.storageService.write("currentUser", user)
+          this.storageService.write("currentUser", user.user)
           // localStorage.setItem('currentUser', JSON.stringify(user));
         }
 
@@ -72,14 +73,112 @@ export class AuthenticationService {
       });
   }
 
+  editCompany(name: string, country: string, truckCount: number, truckVolume: number) {
+    var jsonObj = {}
+    if (name)
+      jsonObj['name']= name
+    if (country)
+      jsonObj['country']= country
+    if (truckCount)
+      jsonObj['truck_count']= truckCount
+    if (truckVolume)
+      jsonObj['truck_volume']= truckVolume
+
+    console.log("json", jsonObj)
+
+    return this.http.post(this.url + 'company/edit', JSON.stringify(jsonObj), this.authenticatedHeaders())
+      .map((response: Response) => {
+
+        // login successful if there's a jwt token in the response
+        let user = this.storageService.read<User>("currentUser")
+
+        let company = response.json().data;
+        if (company) {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          user.company = company.company
+          this.storageService.write("currentUser", user)
+          // localStorage.setItem('currentUser', JSON.stringify(user));
+        }
+
+        return user;
+      });
+  }
+
+  addDriver(name: string, email:string, contact_number: string) {
+    return this.http.post(this.url + 'driver/new', JSON.stringify({name: name, email: email, contact_number: contact_number}), this.authenticatedHeaders())
+      .map((response: Response) => {
+
+        // login successful if there's a jwt token in the response
+        let user = this.storageService.read<User>("currentUser")
+
+        let company = response.json().data;
+        if (company) {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          user.company = company.company
+          this.storageService.write("currentUser", user)
+          // localStorage.setItem('currentUser', JSON.stringify(user));
+        }
+
+        return user;
+      });
+  }
+
+  deleteDriver(public_id: string) {
+    return this.http.post(this.url + 'driver/delete/' + public_id ,{}, this.authenticatedHeaders())
+      .map((response: Response) => {
+
+        // login successful if there's a jwt token in the response
+        let user = this.storageService.read<User>("currentUser")
+        var i:any
+        for (i in user.company.drivers) {
+          if (user.company.drivers[i].public_id == public_id) {
+            delete user.company.drivers[i]
+          }
+        }
+        this.storageService.write("currentUser", user)
+
+
+        return user;
+      });
+  }
+
+  editDriver(data, newData) {
+    return this.http.post(this.url + 'driver/delete/' + data["public_id"] ,JSON.stringify(newData), this.authenticatedHeaders())
+      .map((response: Response) => {
+
+        // login successful if there's a jwt token in the response
+        let user = this.storageService.read<User>("currentUser")
+        var i:any
+        for (i in user.company.drivers) {
+          if (user.company.drivers[i].public_id == data["public_id"]) {
+            if (newData["email"]) {
+              user.company.drivers[i].email = newData["email"]
+            }
+            if (newData["first_name"]) {
+              user.company.drivers[i].first_name= newData["first_name"]
+            }
+            if (newData["last_name"]) {
+              user.company.drivers[i].last_name= newData["last_name"]
+            }
+            if (newData["contact_number"]) {
+              user.company.drivers[i].contact_number= newData["contact_number"]
+            }
+          }
+        }
+        this.storageService.write("currentUser", user)
+
+
+        return user;
+      });
+  }
+
   authenticatedHeaders() {
-  var headers = new Headers({'Content-Type': 'application/json', 'x-access-token': this.storageService.read<User>("currentUser").token});
-  return new RequestOptions({ headers: headers });
+    var headers = new Headers({'Content-Type': 'application/json', 'x-access-token': this.storageService.read<User>("currentUser").token});
+    return new RequestOptions({ headers: headers });
   }
 
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-
   }
 }

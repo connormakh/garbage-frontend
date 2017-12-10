@@ -17,5 +17,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.analytics.trackPageViews();
+    // localStorage.clear()
   }
 }

@@ -3,7 +3,7 @@
      [class.right]="position === 'inverse'">
   <div class="logo-containter">
     <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
-    <div class="logo" (click)="goToHome()"><span>{{ user.user.name }}</span></div>
+    <div class="logo" (click)="goToHome()"><span>{{ user.company.name }}</span></div>
   </div>
 </div>
 
@@ -15,6 +15,6 @@
   <span class="nb-power"></span>
   <nb-action icon="nb-power" class="toggle-layout" (click)="logout()"></nb-action>
   <nb-action>
-    <nb-user [menu]="userMenu" [name]="user.user.name" [picture]="user?.picture"></nb-user>
+    <nb-user [menu]="userMenu" [name]="user.name" [picture]="user?.picture"></nb-user>
   </nb-action>
 </nb-actions>
