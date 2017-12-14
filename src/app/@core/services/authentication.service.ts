@@ -73,7 +73,7 @@ export class AuthenticationService {
       });
   }
 
-  editCompany(name: string, country: string, truckCount: number, truckVolume: number) {
+  editCompany(name: string, country: string, latitude: number, longitude: number, truckCount: number, truckVolume: number) {
     var jsonObj = {}
     if (name)
       jsonObj['name']= name
@@ -83,6 +83,10 @@ export class AuthenticationService {
       jsonObj['truck_count']= truckCount
     if (truckVolume)
       jsonObj['truck_volume']= truckVolume
+    if (latitude)
+      jsonObj['latitude']= latitude
+    if (longitude)
+      jsonObj['longitude']= longitude
 
     console.log("json", jsonObj)
 
@@ -172,8 +176,18 @@ export class AuthenticationService {
       });
   }
 
+  getOptimalRoutes() {
+    return this.http.get(this.url + 'garbage/route', this.authenticatedHeaders())
+      .map((response: Response) => {
+        let trucksRoutes = response.json().data
+
+        return trucksRoutes;
+      });
+  }
+
   authenticatedHeaders() {
     var headers = new Headers({'Content-Type': 'application/json', 'x-access-token': this.storageService.read<User>("currentUser").token});
+    console.log(this.storageService.read<User>("currentUser").token)
     return new RequestOptions({ headers: headers });
   }
 

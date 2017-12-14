@@ -1,0 +1,8 @@
+<nb-card>
+  <nb-card-header>Routing Map</nb-card-header>
+  <nb-card-body>
+    <agm-map [longitude]="longitude" [latitude]="latitude">
+      <ngx-map-directions *ngFor="let direction of directions; let i = index" [ind]="indexOf(direction)" [origin]="direction[0]" [destination]="direction[0]" [waypoints]="direction"></ngx-map-directions>
+    </agm-map>
+  </nb-card-body>
+</nb-card>

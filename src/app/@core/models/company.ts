@@ -9,4 +9,6 @@ export class Company {
   truck_volume: number;
   drivers: Driver[]
   garbageCans: TrashCan[]
+  latitude: string;
+  longitude: string;
 }

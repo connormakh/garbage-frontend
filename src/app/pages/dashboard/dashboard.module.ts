@@ -6,6 +6,9 @@ import { DashboardComponent } from './dashboard.component';
 import { StatusCardComponent } from './status-card/status-card.component';
 import {MapsModule} from "../maps/maps.module";
 import {LeafletComponent} from "../maps/leaflet/leaflet.component";
+import {ConsumptionGraphComponent} from "./consumption-graph/consumption-graph.component";
+import {ConsumptionComponent} from "./consumption/consumption.component";
+import {BarGraphWeeklyComponent} from "./bar-graph-weekly/bar-graph-weekly.component";
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import {LeafletComponent} from "../maps/leaflet/leaflet.component";
   ],
   declarations: [
     DashboardComponent,
-    StatusCardComponent
+    StatusCardComponent,
+    ConsumptionGraphComponent,
+    ConsumptionComponent,
+    BarGraphWeeklyComponent
   ],
 })
 export class DashboardModule { }

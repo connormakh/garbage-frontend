@@ -18,6 +18,13 @@ export class CompanyDetailsComponent implements OnInit{
   private truckCount: number = 0
   private truckVolume: number = 0
 
+  private markerEnabled = false
+  private marker = {lat: 0, lng: 0}
+
+
+  private userLat = 0
+  private userLng = 0
+
   constructor(private storageService: StorageService, private authenticationService: AuthenticationService){}
 
 
@@ -31,9 +38,45 @@ export class CompanyDetailsComponent implements OnInit{
       this.truckCount = this.user.company.truck_count
     }
 
+    if (window.navigator && window.navigator.geolocation) {
+      window.navigator.geolocation.getCurrentPosition(
+        position => {
+          this.userLat = position.coords.latitude
+          this.userLng = position.coords.longitude
+          this.marker ={
+            lat: this.userLat,
+            lng: this.userLng
+          };
+          this.showSave1 = true
+          this.markerEnabled = true
+        },
+        error => {
+          switch (error.code) {
+            case 1:
+              console.log('Permission Denied');
+              break;
+            case 2:
+              console.log('Position Unavailable');
+              break;
+            case 3:
+              console.log('Timeout');
+              break;
+          }
+        }
+      );
+    };
   }
+
+  chooseLocation($event) {
+    this.marker ={
+      lat: $event.coords.lat,
+      lng: $event.coords.lng
+    };
+    this.markerEnabled = true
+  }
+
   saveCompanyDetails(){
-    this.authenticationService.editCompany(this.companyName, this.companyCountry, null, null)
+    this.authenticationService.editCompany(this.companyName, this.companyCountry, this.marker.lat, this.marker.lng, null, null)
       .subscribe(
         data => {
           // this.router.navigate(['/']);
@@ -47,7 +90,7 @@ export class CompanyDetailsComponent implements OnInit{
   }
 
   saveCompanyTruckDetails(){
-    this.authenticationService.editCompany(null, null, this.truckCount, this.truckVolume)
+    this.authenticationService.editCompany(null, null, null, null, this.truckCount, this.truckVolume)
     .subscribe(
         data => {
           // this.router.navigate(['/']);
@@ -61,8 +104,8 @@ export class CompanyDetailsComponent implements OnInit{
   }
 
   setCountry(value) {
-    console.log(value)
     this.showSave1 = true
     this.companyCountry = value.value
+    this.authenticationService.getCountryCoordinates()
   }
 }

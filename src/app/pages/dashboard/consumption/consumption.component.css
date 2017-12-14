@@ -1,0 +1,74 @@
+/*
+Error: File to import not found or unreadable: ~@nebular/theme/styles/theming.
+        on line 2 of ../../../@theme/styles/themes.scss
+        from line 1 of consumption.component.scss
+
+1: @import '../../../@theme/styles/themes';
+2: @import '~@nebular/theme/components/card/card.component.theme';
+3: @import '~@nebular/theme/styles/global/typography/typography';
+4: @import '~bootstrap/scss/mixins/breakpoints';
+5: @import '~@nebular/theme/styles/global/bootstrap/breakpoints';
+6: 
+7: @include nb-install-component() {
+
+Backtrace:
+../../../@theme/styles/themes.scss:2
+consumption.component.scss:1
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:67:in `rescue in import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:45:in `import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:28:in `imported_file'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:37:in `css_import?'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:313:in `visit_import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:328:in `block (2 levels) in visit_import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:328:in `map'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:328:in `block in visit_import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:88:in `block in with_import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:88:in `with_import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:325:in `visit_import'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `block in with_base'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:115:in `with_frame'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/stack.rb:79:in `with_base'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:159:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/plugin.rb:82:in `update_stylesheets'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:340:in `watch_or_update'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/exec/sass_scss.rb:51:in `process_result'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/exec/base.rb:52:in `parse'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/exec/base.rb:19:in `parse!'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/bin/scss:13:in `<top (required)>'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/bin/scss:23:in `load'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/bin/scss:23:in `<main>'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/bin/ruby_executable_hooks:15:in `eval'
+/Users/connormakhlouta/.rvm/gems/ruby-2.3.0/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: ~@nebular/theme/styles/theming.\A         on line 2 of ../../../@theme/styles/themes.scss\A         from line 1 of consumption.component.scss\A \A 1: @import '../../../@theme/styles/themes';\A 2: @import '~@nebular/theme/components/card/card.component.theme';\A 3: @import '~@nebular/theme/styles/global/typography/typography';\A 4: @import '~bootstrap/scss/mixins/breakpoints';\A 5: @import '~@nebular/theme/styles/global/bootstrap/breakpoints';\A 6: \A 7: @include nb-install-component() {"; }

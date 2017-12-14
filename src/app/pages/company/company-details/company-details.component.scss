@@ -118,6 +118,9 @@
       color: nb-theme(color-primary);
     }
   }
+  agm-map {
+    height: 300px;
+  }
 
   @include media-breakpoint-down(xs) {
     button:not(.btn-icon) {

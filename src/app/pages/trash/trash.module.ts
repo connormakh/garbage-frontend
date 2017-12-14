@@ -9,7 +9,9 @@ import { TrashComponent } from './trash.component';
 import {TrashCardComponent} from "./trash-card/trash-card.component";
 import {TrashRequestComponent} from "./trash-request/trash-request.component";
 import {TrashRequestModalComponent} from "./trash-request/modal/request-modal.component";
-import {AgmCoreModule} from "@agm/core";
+import {AgmCoreModule, GoogleMapsAPIWrapper} from "@agm/core";
+import {RoutingMapComponent} from "./routing-map/routing-map.component";
+import {MapDirectionsDirective} from "./routing-map/map-directions.directive";
 
 
 @NgModule({
@@ -25,10 +27,16 @@ import {AgmCoreModule} from "@agm/core";
     TrashComponent,
     TrashCardComponent,
     TrashRequestComponent,
-    TrashRequestModalComponent
+    TrashRequestModalComponent,
+    RoutingMapComponent,
+    MapDirectionsDirective
   ],
   entryComponents: [
     TrashRequestModalComponent,
   ],
+  providers: [
+    MapDirectionsDirective,
+    GoogleMapsAPIWrapper
+  ]
 })
 export class TrashModule { }

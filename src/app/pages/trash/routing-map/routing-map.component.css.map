@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,OAAQ;EACN,MAAM,EAAC,KAAK",
+"sources": ["routing-map.component.scss"],
+"names": [],
+"file": "routing-map.component.css"
+}

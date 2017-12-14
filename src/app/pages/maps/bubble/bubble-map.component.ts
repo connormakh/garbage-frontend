@@ -459,7 +459,7 @@ export class BubbleMapComponent implements OnDestroy {
 
         this.options = {
           title: {
-            text: 'World Population (2011)',
+            text: 'My Bins',
             left: 'center',
             top: 'top',
             textStyle: {
@@ -481,7 +481,7 @@ export class BubbleMapComponent implements OnDestroy {
             },
           },
           geo: {
-            name: 'World Population (2010)',
+            name: 'My Bins',
             type: 'map',
             map: 'world',
             roam: true,
@@ -499,7 +499,7 @@ export class BubbleMapComponent implements OnDestroy {
                 areaColor: this.bubbleTheme.areaHoverColor,
               },
             },
-            zoom: 1.1,
+            zoom: 3,
           },
           series: [
             {
