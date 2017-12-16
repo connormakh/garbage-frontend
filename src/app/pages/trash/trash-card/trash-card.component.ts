@@ -12,4 +12,16 @@ import {TrashCan} from "./trash-can";
 
 export class TrashCardComponent {
   @Input() trashCan: TrashCan
+
+  getTrashCanColor() {
+    if (this.trashCan != null && this.trashCan.completion != null) {
+      if(this.trashCan.completion < 0.33) {
+        return "lightgreen"
+      } else if (this.trashCan.completion < 0.66) {
+        return "orange"
+      } else {
+        return "red"
+      }
+    }
+  }
 }

@@ -2,7 +2,7 @@
     <nb-card-header>{{ trashCan.name }}</nb-card-header>
     <nb-card-body>
       <div class="glass">
-        <div class="water"></div>
+        <div class="water" [style.height]="60*trashCan.completion + '%'" [style.background-color]="getTrashCanColor()"></div>
       </div>
     </nb-card-body>
   </nb-card>

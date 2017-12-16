@@ -3,9 +3,8 @@
  */
 export class TrashCan {
   id: number;
-  name: String;
-  location: Location;
+  name: string;
+  location: string;
   volume: number;
-  height: number;
-  filled: number;
+  completion: number;
 }

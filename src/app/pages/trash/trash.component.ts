@@ -10,7 +10,10 @@ import {TrashCan} from "./trash-card/trash-can";
 })
 
 export class TrashComponent implements OnInit{
-  trashCans: TrashCan[] = []
+  trashCans: TrashCan[] = [{id: 5, name: '443425243', location: "yes", completion: 0.5, volume: 400},
+    {id: 5, name: '443425243', location: "yes", completion: 0.8, volume: 400},
+    {id: 5, name: '443425243', location: "yes", completion: 0.2, volume: 400},
+    {id: 5, name: '443425243', location: "yes", completion: 0.3, volume: 400},]
 
   ngOnInit(): void {
   }
