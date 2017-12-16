@@ -1,0 +1,19 @@
+
+<div class="modal-header">
+  <span>{{ modalHeader }}</span>
+  <button class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <div class="input-group">
+    <select class="form-control" name="zoom" [(ngModel)]="chosenDriver" required>
+      <option *ngFor="let driver of availableDrivers" [value]="driver.public_id">{{driver.first_name + driver.last_name}}</option>
+    </select>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-md btn-primary pull-left" (click)="autoAssign()">Auto-Assign</button>
+  <button class="btn btn-md btn-primary" (click)="sendDriver()">Send Driver</button>
+</div>

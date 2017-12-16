@@ -185,6 +185,13 @@ export class AuthenticationService {
       });
   }
 
+  sendDriver(chosenDriver, index) {
+    return this.http.post(this.url + 'user/collection/send',{driver_id: chosenDriver, route_id: index}, this.authenticatedHeaders())
+      .map((response: Response) => {
+
+      });
+  }
+
   authenticatedHeaders() {
     var headers = new Headers({'Content-Type': 'application/json', 'x-access-token': this.storageService.read<User>("currentUser").token});
     console.log(this.storageService.read<User>("currentUser").token)

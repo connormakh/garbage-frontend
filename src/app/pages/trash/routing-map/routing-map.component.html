@@ -1,7 +1,9 @@
 <nb-card>
-  <nb-card-header>Routing Map</nb-card-header>
+  <nb-card-header>Routing Map
+    <button class="btn btn-md btn-primary pull-right" (click)="openSendDriverModal()">Send Routes To Drivers</button>
+  </nb-card-header>
   <nb-card-body>
-    <agm-map [longitude]="longitude" [latitude]="latitude">
+    <agm-map [longitude]="longitude" [latitude]="latitude" [gestureHandling]="cooperative">
       <ngx-map-directions *ngFor="let direction of directions; let i = index" [ind]="indexOf(direction)" [origin]="direction[0]" [destination]="direction[0]" [waypoints]="direction"></ngx-map-directions>
     </agm-map>
   </nb-card-body>

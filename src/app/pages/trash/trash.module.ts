@@ -12,6 +12,7 @@ import {TrashRequestModalComponent} from "./trash-request/modal/request-modal.co
 import {AgmCoreModule, GoogleMapsAPIWrapper} from "@agm/core";
 import {RoutingMapComponent} from "./routing-map/routing-map.component";
 import {MapDirectionsDirective} from "./routing-map/map-directions.directive";
+import {DriverSendModalComponent} from "./routing-map/send-modal/driver-send-modal.component";
 
 
 @NgModule({
@@ -29,10 +30,12 @@ import {MapDirectionsDirective} from "./routing-map/map-directions.directive";
     TrashRequestComponent,
     TrashRequestModalComponent,
     RoutingMapComponent,
-    MapDirectionsDirective
+    MapDirectionsDirective,
+    DriverSendModalComponent
   ],
   entryComponents: [
     TrashRequestModalComponent,
+    DriverSendModalComponent
   ],
   providers: [
     MapDirectionsDirective,

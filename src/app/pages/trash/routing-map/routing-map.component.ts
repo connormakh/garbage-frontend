@@ -5,6 +5,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../../@core/services/authentication.service";
 import {MapDirectionsDirective} from "./map-directions.directive";
 import {StorageService} from "../../../@core/services/storage.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {DriverSendModalComponent} from "./send-modal/driver-send-modal.component";
 
 @Component({
   selector: 'ngx-routing-map',
@@ -16,8 +18,12 @@ export class RoutingMapComponent implements OnInit {
   private directions: [[number]] = [[0]]
   private latitude = 0
   private longitude = 0
+  private cooperative = "cooperative"
 
-  constructor(private authenticationService: AuthenticationService, private ws: MapDirectionsDirective, private storageService: StorageService) {}
+  constructor(private authenticationService: AuthenticationService,
+              private ws: MapDirectionsDirective,
+              private storageService: StorageService,
+              private modalService:NgbModal) {}
 
   ngOnInit() {
     this.latitude = this.storageService.read<number>("userLat")
@@ -41,6 +47,11 @@ export class RoutingMapComponent implements OnInit {
       }
     }
     return -1
+  }
+
+  openSendDriverModal() {
+    const activeModal = this.modalService.open(DriverSendModalComponent, { size: 'lg', container: 'nb-layout' });
+    activeModal.componentInstance.modalHeader = 'Choose a driver to send ';
   }
 
 

@@ -1,5 +1,7 @@
 import {Directive, Input} from "@angular/core";
 import {GoogleMapsAPIWrapper} from "@agm/core";
+import {DriverSendModalComponent} from "./send-modal/driver-send-modal.component";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 // import {google} from "@agm/core/services/google-maps-types";
 declare var google: any;
 
@@ -13,7 +15,7 @@ export class MapDirectionsDirective {
   @Input() ind;
   private infoWindow = null
 
-  constructor (private gmapsApi: GoogleMapsAPIWrapper) {}
+  constructor (private gmapsApi: GoogleMapsAPIWrapper, private modalService:NgbModal) {}
 
   randomColor() {
     var colors = ['red', 'blue', 'pink', 'purple', 'brown']
@@ -30,7 +32,10 @@ export class MapDirectionsDirective {
       this.gmapsApi.getNativeMap().then(map => {
         var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
-
+        directionsDisplay.origin = this.origin
+        directionsDisplay.waypoints= this.waypoints
+        directionsDisplay.ind= this.ind
+        directionsDisplay.modalService = this.modalService
         directionsDisplay.setMap(map);
         directionsDisplay.setOptions({
           polylineOptions: {
@@ -64,9 +69,18 @@ export class MapDirectionsDirective {
                 }
                 this.infoWindow = new google.maps.InfoWindow();
                 this.infoWindow.setPosition(e.latLng);
-                this.infoWindow.setContent("Route");
+                this.infoWindow.setContent("Route: " + directionsDisplay.ind);
                 this.infoWindow.open(map);
               });
+
+            google.maps.event.addListener(eventLine, 'click', function(e) {
+              const activeModal = directionsDisplay.modalService.open(DriverSendModalComponent, { size: 'lg', container: 'nb-layout' });
+              activeModal.componentInstance.modalHeader = 'Choose a driver to send ';
+              activeModal.componentInstance.index = directionsDisplay.ind;
+              activeModal.componentInstance.waypoints = directionsDisplay.waypoints;
+              console.log(directionsDisplay.waypoints)
+              activeModal.componentInstance.origin = directionsDisplay.origins;
+            });
 
               google.maps.event.addListener(eventLine, 'mouseout', function(e) {
                 if (this.infoWindow != null) {
