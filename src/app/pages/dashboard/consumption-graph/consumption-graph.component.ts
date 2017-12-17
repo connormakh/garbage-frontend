@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, Input, OnInit, OnChanges} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
+import {AngularEchartsDirective} from "ngx-echarts";
 
 declare const echarts: any;
 
@@ -7,21 +8,22 @@ declare const echarts: any;
   selector: 'ngx-consumption-chart',
   styleUrls: ['./consumption-graph.component.scss'],
   template: `
-    <div echarts [options]="option" class="echart"></div>
+    <div echarts [options]="option" class="echart" (chartInit)="onChartInit($event)"></div>
   `,
 })
-export class ConsumptionGraphComponent implements AfterViewInit, OnDestroy {
+export class ConsumptionGraphComponent implements OnChanges, OnDestroy {
 
   option: any;
   data: Array<any>;
   themeSubscription: any;
+  echartsInstance: any;
+  @Input() records;
+  @Input() type;
 
   constructor(private theme: NbThemeService) {
 
-    const points = [490, 490, 495, 500, 505, 510, 520, 530, 550, 580, 630,
-      720, 800, 840, 860, 870, 870, 860, 840, 800, 720, 200, 145, 130, 130,
-      145, 200, 570, 635, 660, 670, 670, 660, 630, 580, 460, 380, 350, 340,
-      340, 340, 340, 340, 340, 340, 340, 340];
+
+
 
     // const points = [];
     // let pointsCount = 100;
@@ -33,13 +35,46 @@ export class ConsumptionGraphComponent implements AfterViewInit, OnDestroy {
     //   let res = x**3 - 5*x + 17;
     //   points.push(Math.round(res * 25));
     // }
-    this.data = points.map((p, index) => ({
-      label: (index % 5 === 3) ? `${Math.round(index / 5)}` : '',
-      value: p,
-    }));
+
+
+
+
+  }
+  onChartInit(e) {
+    this.echartsInstance = e
   }
 
-  ngAfterViewInit(): void {
+  ngOnChanges() {
+    console.log("changes")
+    let points = [];
+    if (this.type == "year")  {
+      points = []
+      for(let p of this.records) {
+        points.push(p.sum)
+      }
+      this.data = points.map((p, index) => ({
+        label: this.records[index].title,
+        value: p
+      }));
+    }
+
+    if(this.type == "month") {
+      for(let p of this.records[this.records.length - 1].months) {
+
+        points.push(p.kWatts)
+      }
+      this.data = points.map((p, index) => ({
+        label: this.records[this.records.length - 1].months[index].month,
+        value: p
+      }));
+    }
+
+
+    this.initOpt()
+
+  }
+
+  initOpt(): void {
     this.themeSubscription = this.theme.getJsTheme().delay(1).subscribe(config => {
       const eTheme: any = config.variables.electricity;
 
@@ -68,13 +103,13 @@ export class ConsumptionGraphComponent implements AfterViewInit, OnDestroy {
           backgroundColor: eTheme.tooltipBg,
           borderColor: eTheme.tooltipBorderColor,
           borderWidth: 3,
-          formatter: '{c0} kWh',
+          formatter: '{c0} m3',
           extraCssText: eTheme.tooltipExtraCss,
         },
         xAxis: {
           type: 'category',
-          boundaryGap: false,
-          offset: 25,
+          boundaryGap: true,
+          offset: 0,
           data: this.data.map(i => i.label),
           axisTick: {
             show: false,

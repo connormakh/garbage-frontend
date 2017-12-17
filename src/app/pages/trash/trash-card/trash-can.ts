@@ -7,4 +7,5 @@ export class TrashCan {
   location: string;
   volume: number;
   completion: number;
+  predict_full: boolean = false
 }

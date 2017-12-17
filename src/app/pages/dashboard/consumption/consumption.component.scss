@@ -108,7 +108,7 @@
       padding-left: 1rem;
       font-size: 0.75rem;
 
-      color: text-danger();
+      color: text-success();
 
       &::before {
         position: absolute;
@@ -118,15 +118,15 @@
 
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
-        border-bottom: 8px solid text-danger();
+        border-bottom: 8px solid text-success();
       }
 
       &.down {
-        color: text-success();
+        color: text-danger();
 
         &::before {
           top: 3px;
-          border-top: 8px solid text-success();
+          border-top: 8px solid text-danger();
           border-bottom: none;
         }
       }

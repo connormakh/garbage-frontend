@@ -192,6 +192,58 @@ export class AuthenticationService {
       });
   }
 
+  getConsumptionGraph(type) {
+    return this.http.get(this.url + 'user/collection/graph/' + type, this.authenticatedHeaders())
+      .map((response: Response) => {
+        let data = response.json().data._batch
+
+        var result = []
+        // get years
+        for(let i =0 ; i < data.length; i++ ) {
+          // check if year exists already, if it does, add record to it by month
+          // else create year record and put record in it
+          console.log(data[i])
+          let yearInd = this.checkIfYearExists(result, data[i]._id.year)
+          if(yearInd != -1) {
+            result[yearInd].months.push({month: this.monthToText(data[i]._id.month), kWatts: data[i].totalAmount})
+          } else {
+            result.push({title: data[i]._id.year+"", months: []})
+          }
+        }
+
+        for (let i =0; i<result.length; i++) {
+          let currentYear = result[i]
+          var sum = 0
+          for (let j =0; j<currentYear.months.length; j++) {
+            sum += currentYear.months[j].kWatts
+            if (i==0 && j==0) {
+              result[i].months[j].down = false
+              result[i].months[j].delta = 0
+            } else if (j==0) {
+              let diff = (result[i].months[j].kWatts - result[i-1].months[result[i-1].months.length - 1].kWatts) / result[i-1].months[result[i-1].months.length - 1].kWatts
+              if (diff >= 0) {
+                result[i].months[j].down = false
+              } else  result[i].months[j].down = true
+              result[i].months[j].delta = Math.round(diff* 100) / 100
+            } else {
+              let diff = (result[i].months[j].kWatts - result[i].months[j - 1].kWatts) / result[i].months[j - 1].kWatts
+              result[i].months[j].delta = Math.round(diff* 100) / 100
+              if (diff >= 0) {
+                result[i].months[j].down = false
+              } else  result[i].months[j].down = true
+            }
+          }
+          result[i].sum = sum
+
+        }
+
+        result[result.length - 1].active = true
+
+
+        return result;
+      });
+  }
+
   authenticatedHeaders() {
     var headers = new Headers({'Content-Type': 'application/json', 'x-access-token': this.storageService.read<User>("currentUser").token});
     console.log(this.storageService.read<User>("currentUser").token)
@@ -201,5 +253,62 @@ export class AuthenticationService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+  }
+
+  dayToText(numb) {
+    switch (numb) {
+      case 1:
+        return "Sun"
+      case 2:
+        return "Mon"
+      case 3:
+        return "Tues"
+      case 4:
+        return "Wed"
+      case 5:
+        return "Thurs"
+      case 6:
+        return "Fri"
+      case 7:
+        return "Sat"
+    }
+  }
+
+  monthToText(numb) {
+    switch (numb) {
+      case 1:
+        return "Jan"
+      case 2:
+        return "Feb"
+      case 3:
+        return "Mar"
+      case 4:
+        return "Apr"
+      case 5:
+        return "May"
+      case 6:
+        return "Jun"
+      case 7:
+        return "July"
+      case 8:
+        return "Aug"
+      case 9:
+        return "Sept"
+      case 10:
+        return "Oct"
+      case 11:
+        return "Nov"
+      case 12:
+        return "Dec"
+    }
+  }
+
+  checkIfYearExists(results, year) {
+    for(let i =0; i< results.length; i++){
+      if (results[i].title == year + "") {
+        return i;
+      }
+    }
+    return -1;
   }
 }

@@ -15,12 +15,16 @@ export class TrashCardComponent {
 
   getTrashCanColor() {
     if (this.trashCan != null && this.trashCan.completion != null) {
-      if(this.trashCan.completion < 0.33) {
-        return "lightgreen"
-      } else if (this.trashCan.completion < 0.66) {
+      if (this.trashCan.predict_full) {
         return "orange"
       } else {
-        return "red"
+        if(this.trashCan.completion < 0.33) {
+          return "green"
+        } else if (this.trashCan.completion < 0.66) {
+          return "yellow"
+        } else {
+          return "red"
+        }
       }
     }
   }

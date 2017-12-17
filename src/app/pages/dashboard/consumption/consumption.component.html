@@ -13,7 +13,7 @@
             <span class="delta" [ngClass]="{ 'down': month.down }">{{ month.delta }}</span>
           </div>
           <div class="results">
-            <b>{{ month.kWatts }}</b> kWh / <b>{{ month.cost }}</b> USD
+            <b>{{ month.kWatts }}</b> m3
           </div>
         </div>
       </nb-tab>
@@ -24,10 +24,10 @@
     <div class="chart-header">
       <div class="header-stats">
         <div class="stats-block">
-          <div class="subtitle">Collected</div>
+          <div class="subtitle">Collected since signup</div>
           <div>
-            <span class="value">816</span>
-            <span class="unit">kWh</span>
+            <span class="value">{{sum}}</span>
+            <span class="unit">M3</span>
           </div>
         </div>
       </div>
@@ -38,11 +38,11 @@
           {{ type }}
         </button>
         <ul class="dropdown-menu" ngbDropdownMenu>
-          <li class="dropdown-item" *ngFor="let t of types" (click)="type = t">{{ t }}</li>
+          <li class="dropdown-item" *ngFor="let t of types" (click)="changeType(t)">{{ t }}</li>
         </ul>
       </div>
 
     </div>
-    <ngx-consumption-chart></ngx-consumption-chart>
+    <ngx-consumption-chart [records]="data" [type]="type"></ngx-consumption-chart>
   </div>
 </nb-card>
