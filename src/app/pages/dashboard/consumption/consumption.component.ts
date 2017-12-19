@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 
 import { ElectricityService } from '../../../@core/data/electricity.service';
@@ -9,7 +9,7 @@ import {AuthenticationService} from "../../../@core/services/authentication.serv
   styleUrls: ['./consumption.component.scss'],
   templateUrl: './consumption.component.html',
 })
-export class ConsumptionComponent implements OnDestroy {
+export class ConsumptionComponent implements OnDestroy, OnInit {
 
   data: Array<any>;
 
@@ -23,10 +23,13 @@ export class ConsumptionComponent implements OnDestroy {
   constructor(private eService: ElectricityService, private themeService: NbThemeService, private authenticationService: AuthenticationService) {
     // this.data = this.eService.getData();
 
+
+  }
+
+  ngOnInit() {
     this.authenticationService.getConsumptionGraph("m")
       .subscribe(
         data => {
-          console.log(data)
           this.data = data
 
           let summ = 0
@@ -50,7 +53,6 @@ export class ConsumptionComponent implements OnDestroy {
 
   changeType(t) {
     this.type = t
-    console.log(t)
 
     switch (t) {
       case "year":

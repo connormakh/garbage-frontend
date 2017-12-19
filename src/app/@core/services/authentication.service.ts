@@ -23,8 +23,9 @@ export class AuthenticationService {
         let user = response.json().data;
         console.log(user)
         if (user && user.token) {
+          user.user.token = user.token
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          this.storageService.write("currentUser", user)
+          this.storageService.write("currentUser", user.user)
           // localStorage.setItem('currentUser', JSON.stringify(user));
         }
 
@@ -67,7 +68,7 @@ export class AuthenticationService {
   }
 
   requestBin(latitude: string, longitude: string, details: string) {
-    return this.http.post(this.url + 'garbage_request/new', JSON.stringify({ details: details, latitude: latitude, longitude: longitude }), this.authenticatedHeaders())
+    return this.http.post(this.url + 'garbage_request/new', JSON.stringify({ location_details: details, latitude: latitude, longitude: longitude }), this.authenticatedHeaders())
       .map((response: Response) => {
         return response;
       });
@@ -196,13 +197,66 @@ export class AuthenticationService {
     return this.http.get(this.url + 'user/collection/graph/' + type, this.authenticatedHeaders())
       .map((response: Response) => {
         let data = response.json().data._batch
+        var result = []
+        console.log(data)
+
+        // get years
+        for(let i =0 ; i < data.length; i++ ) {
+          // check if year exists already, if it does, add record to it by month
+          // else create year record and put record in it
+          let yearInd = this.checkIfYearExists(result, data[i]._id.year)
+          console.log(yearInd)
+          if(yearInd != -1) {
+            result[yearInd].months.push({month: this.monthToText(data[i]._id.month), kWatts: data[i].totalAmount})
+          } else {
+            result.push({title: data[i]._id.year+"", months: []})
+          }
+        }
+
+        for (let i = 0; i< result.length; i++) {
+          let currentYear = result[i]
+          var sum = 0
+          for (let j =0; j<currentYear.months.length; j++) {
+            sum += currentYear.months[j].kWatts
+            if (i==0 && j==0) {
+              result[i].months[j].down = false
+              result[i].months[j].delta = 0
+            }
+              else if (j==0) {
+              // let diff = (result[i].months[j].kWatts - result[i-1].months[result[i-1].months.length - 1].kWatts) / result[i-1].months[result[i-1].months.length - 1].kWatts
+              let diff = 0
+              if (diff >= 0) {
+                result[i].months[j].down = false
+              } else  result[i].months[j].down = true
+              result[i].months[j].delta = Math.round(diff* 100) / 100
+            }
+            else {
+              let diff = (result[i].months[j].kWatts - result[i].months[j - 1].kWatts) / result[i].months[j - 1].kWatts
+              result[i].months[j].delta = Math.round(diff* 100) / 100
+              if (diff >= 0) {
+                result[i].months[j].down = false
+              } else  result[i].months[j].down = true
+            }
+          }
+          result[i].sum = sum
+        }
+
+        result[result.length - 1].active = true
+
+        return result;
+      });
+  }
+
+  getEmptiedGraph(type) {
+    return this.http.get(this.url + 'garbage/filled_stats/' + type, this.authenticatedHeaders())
+      .map((response: Response) => {
+        let data = response.json().data._batch
 
         var result = []
         // get years
         for(let i =0 ; i < data.length; i++ ) {
           // check if year exists already, if it does, add record to it by month
           // else create year record and put record in it
-          console.log(data[i])
           let yearInd = this.checkIfYearExists(result, data[i]._id.year)
           if(yearInd != -1) {
             result[yearInd].months.push({month: this.monthToText(data[i]._id.month), kWatts: data[i].totalAmount})
@@ -220,7 +274,8 @@ export class AuthenticationService {
               result[i].months[j].down = false
               result[i].months[j].delta = 0
             } else if (j==0) {
-              let diff = (result[i].months[j].kWatts - result[i-1].months[result[i-1].months.length - 1].kWatts) / result[i-1].months[result[i-1].months.length - 1].kWatts
+              // let diff = (result[i].months[j].kWatts - result[i-1].months[result[i-1].months.length - 1].kWatts) / result[i-1].months[result[i-1].months.length - 1].kWatts
+              let diff = 0
               if (diff >= 0) {
                 result[i].months[j].down = false
               } else  result[i].months[j].down = true
@@ -239,14 +294,38 @@ export class AuthenticationService {
 
         result[result.length - 1].active = true
 
+        console.log(result)
 
         return result;
       });
   }
 
+  getDriverActivity() {
+    return this.http.get(this.url + 'driver/activity', this.authenticatedHeaders())
+      .map((response: Response) => {
+        let data = response.json().data._batch
+
+        return data;
+      });
+  }
+
+  getCans() {
+    return this.http.get(this.url + 'garbage/updates', this.authenticatedHeaders())
+      .map((response: Response) => {
+        let data = response.json().data
+
+
+        for (let dat of data) {
+
+        }
+
+
+        return data;
+      });
+  }
+
   authenticatedHeaders() {
     var headers = new Headers({'Content-Type': 'application/json', 'x-access-token': this.storageService.read<User>("currentUser").token});
-    console.log(this.storageService.read<User>("currentUser").token)
     return new RequestOptions({ headers: headers });
   }
 

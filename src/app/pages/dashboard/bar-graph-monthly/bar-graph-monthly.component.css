@@ -1,7 +1,7 @@
 /*
 Error: File to import not found or unreadable: ~@nebular/theme/styles/theming.
         on line 2 of ../../../@theme/styles/themes.scss
-        from line 1 of bar-graph-weekly.component.scss
+        from line 1 of bar-graph-monthly.component.scss
 
 1: @import '../../../@theme/styles/themes';
 2: 
@@ -13,7 +13,7 @@ Error: File to import not found or unreadable: ~@nebular/theme/styles/theming.
 
 Backtrace:
 ../../../@theme/styles/themes.scss:2
-bar-graph-weekly.component.scss:1
+bar-graph-monthly.component.scss:1
 /Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:67:in `rescue in import'
 /Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:45:in `import'
 /Users/connormakhlouta/.rvm/gems/ruby-2.3.0/gems/sass-3.4.23/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -71,4 +71,4 @@ bar-graph-weekly.component.scss:1
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ~@nebular/theme/styles/theming.\A         on line 2 of ../../../@theme/styles/themes.scss\A         from line 1 of bar-graph-weekly.component.scss\A \A 1: @import '../../../@theme/styles/themes';\A 2: \A 3: @include nb-install-component() {\A 4:   ngx-weekly-bar{\A 5:     display: block;\A 6:     height: 600px;\A 7:     width: 100%;"; }
+  content: "Error: File to import not found or unreadable: ~@nebular/theme/styles/theming.\A         on line 2 of ../../../@theme/styles/themes.scss\A         from line 1 of bar-graph-monthly.component.scss\A \A 1: @import '../../../@theme/styles/themes';\A 2: \A 3: @include nb-install-component() {\A 4:   ngx-weekly-bar{\A 5:     display: block;\A 6:     height: 600px;\A 7:     width: 100%;"; }

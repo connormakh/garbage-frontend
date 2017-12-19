@@ -7,6 +7,7 @@ import {MapDirectionsDirective} from "./map-directions.directive";
 import {StorageService} from "../../../@core/services/storage.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {DriverSendModalComponent} from "./send-modal/driver-send-modal.component";
+import {User} from "../../../@core/models/user";
 
 @Component({
   selector: 'ngx-routing-map',
@@ -16,8 +17,8 @@ import {DriverSendModalComponent} from "./send-modal/driver-send-modal.component
 
 export class RoutingMapComponent implements OnInit {
   private directions: [[number]] = [[0]]
-  private latitude = 0
-  private longitude = 0
+  private latitude = ""
+  private longitude = ""
   private cooperative = "cooperative"
 
   constructor(private authenticationService: AuthenticationService,
@@ -26,13 +27,16 @@ export class RoutingMapComponent implements OnInit {
               private modalService:NgbModal) {}
 
   ngOnInit() {
-    this.latitude = this.storageService.read<number>("userLat")
-    this.longitude = this.storageService.read<number>("userLng")
+    this.latitude = this.storageService.read<User>("currentUser").company.latitude + ""
+    this.longitude = this.storageService.read<User>("currentUser").company.longitude + ""
     this.authenticationService.getOptimalRoutes()
       .subscribe(
         data => {
           console.log(data)
-          this.directions = data
+          if (data[0].length > 0) {
+            this.directions = data
+            console.log("heu")
+          }
           this.ws.ngOnInit()
         },
         error => {

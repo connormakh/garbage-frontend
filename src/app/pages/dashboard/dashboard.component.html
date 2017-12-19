@@ -1,6 +1,31 @@
 
 
 <ngx-consumption></ngx-consumption>
+
 <div class="row">
-<ngx-weekly-bar></ngx-weekly-bar>
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Garbage filling by year</nb-card-header>
+      <nb-card-body>
+        <ngx-weekly-bar></ngx-weekly-bar>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Garbage filling by month</nb-card-header>
+      <nb-card-body>
+        <ngx-monthly-bar></ngx-monthly-bar>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Driver Activity (Number of pickups carried out by drivers)</nb-card-header>
+      <nb-card-body>
+        <ngx-drivers-pie></ngx-drivers-pie>
+      </nb-card-body>
+    </nb-card>
+  </div>
 </div>
+

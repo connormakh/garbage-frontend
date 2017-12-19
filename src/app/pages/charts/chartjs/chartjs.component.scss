@@ -11,10 +11,15 @@
     height: nb-theme(card-height-medium);
     width: 100%;
 
-    /deep/ chart {
+    chart {
       display: block;
-      height: 100%;
+      height: 600px;
       width: 100%;
     }
+  }
+  chart {
+    display: block;
+    height: 600px;
+    width: 100%;
   }
 }

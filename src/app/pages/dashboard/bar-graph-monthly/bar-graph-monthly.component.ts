@@ -3,16 +3,16 @@ import {NbThemeService, NbColorHelper} from '@nebular/theme';
 import {AuthenticationService} from "../../../@core/services/authentication.service";
 
 @Component({
-  selector: 'ngx-weekly-bar',
-  templateUrl: 'bar-graph-weekly.component.html',
-  styleUrls: ['bar-graph-weekly.component.scss']
+  selector: 'ngx-monthly-bar',
+  templateUrl: 'bar-graph-monthly.component.html',
+  styleUrls: ['bar-graph-monthly.component.scss']
 })
-export class BarGraphWeeklyComponent implements OnInit{
+export class BarGraphMonthlyComponent implements OnInit{
   data: any;
   options: any;
   themeSubscription: any;
   labels: any[]
-  yearly: any[]
+  monthly: any[]
 
   constructor(private theme: NbThemeService, private authenticationService: AuthenticationService) {}
 
@@ -21,13 +21,13 @@ export class BarGraphWeeklyComponent implements OnInit{
     this.authenticationService.getEmptiedGraph("y")
       .subscribe(
         data => {
-            this.labels = []
-            this.yearly = []
-            for (let obj of data) {
-              this.labels.push(obj.title)
-              this.yearly.push(obj.sum)
-            }
-            this.initOptions()
+          this.labels = []
+          this.monthly= []
+          for (let obj of data[data.length - 1].months) {
+            this.labels.push(obj.month)
+            this.monthly.push(obj.kWatts)
+          }
+          this.initOptions()
         },
         error => {
           // this.alertService.error(error);
@@ -46,7 +46,7 @@ export class BarGraphWeeklyComponent implements OnInit{
       this.data = {
         labels: this.labels,
         datasets: [{
-          data: this.yearly,
+          data: this.monthly,
           label: 'Cans Filled',
           backgroundColor: NbColorHelper.hexToRgbA(colors.primaryLight, 0.8),
         }],
@@ -90,7 +90,6 @@ export class BarGraphWeeklyComponent implements OnInit{
 
   ngOnDestroy(): void {
     if (this.themeSubscription)
-
       this.themeSubscription.unsubscribe();
   }
 

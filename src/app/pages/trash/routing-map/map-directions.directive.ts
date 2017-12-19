@@ -24,7 +24,6 @@ export class MapDirectionsDirective {
 
   ngOnInit(){
     if (this.origin != null) {
-      console.log(this.waypoints)
       var waypointString = []
       for (let wpt of this.waypoints.slice(1)) {
         waypointString.push({location: {lat: wpt[0], lng:wpt[1]}, stopover: true})

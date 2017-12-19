@@ -7,10 +7,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class DashboardComponent implements OnInit{
 
+
   ngOnInit() {
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
         position => {
+
           localStorage.setItem("userLat", position.coords.latitude + "")
           localStorage.setItem("userLng", position.coords.longitude+ "")
         },

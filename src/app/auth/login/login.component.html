@@ -27,8 +27,6 @@
   <small class="form-text error" *ngIf="password.invalid && password.touched && password.errors?.required">Password is required!</small><small class="form-text error" *ngIf="password.invalid && password.touched && (password.errors?.minlength || password.errors?.maxlength)">Password should contains from 5 to 20 characters</small>
   </div>
   <div class="form-group accept-group col-sm-12">
-  <nb-checkbox name="rememberMe" [(ngModel)]="user.rememberMe">Remember me</nb-checkbox>
-  <a class="forgot-password" routerLink="../request-password">Forgot Password?</a>
   </div>
     <a class="forgot-password" routerLink="/auth/signup">New here? Sign up now!</a>
 

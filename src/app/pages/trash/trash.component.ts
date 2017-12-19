@@ -3,6 +3,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import {TrashCan} from "./trash-card/trash-can";
+import {AuthenticationService} from "../../@core/services/authentication.service";
 
 @Component({
   selector: 'ngx-trash',
@@ -10,12 +11,20 @@ import {TrashCan} from "./trash-card/trash-can";
 })
 
 export class TrashComponent implements OnInit{
-  trashCans: TrashCan[] = [{id: 5, name: '443425243', location: "yes", completion: 0.5, volume: 400},
-    {id: 5, name: '443425243', location: "yes", completion: 0.8, volume: 400},
-    {id: 5, name: '443425243', location: "yes", completion: 0.2, volume: 400},
-    {id: 5, name: '443425243', location: "yes", completion: 0.3, volume: 400},]
+  trashCans: TrashCan[] = []
+
+  constructor(private authenticationService: AuthenticationService) {}
+
 
   ngOnInit(): void {
+    this.authenticationService.getCans()
+      .subscribe(
+        data => {
+          this.trashCans = data
+        },
+        error => {
+
+        });
   }
 
 }

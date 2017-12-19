@@ -45,9 +45,10 @@ export class ConsumptionGraphComponent implements OnChanges, OnDestroy {
   }
 
   ngOnChanges() {
-    console.log("changes")
     let points = [];
-    if (this.type == "year")  {
+    console.log(this.records)
+
+    if (this.type == "year" && this.records != null && this.records.length > 0)  {
       points = []
       for(let p of this.records) {
         points.push(p.sum)
@@ -58,7 +59,7 @@ export class ConsumptionGraphComponent implements OnChanges, OnDestroy {
       }));
     }
 
-    if(this.type == "month") {
+    if(this.type == "month" && this.records != null && this.records.length > 0) {
       for(let p of this.records[this.records.length - 1].months) {
 
         points.push(p.kWatts)
@@ -70,7 +71,8 @@ export class ConsumptionGraphComponent implements OnChanges, OnDestroy {
     }
 
 
-    this.initOpt()
+    if(this.records != null && this.records.length > 0)
+      this.initOpt()
 
   }
 
@@ -220,6 +222,7 @@ export class ConsumptionGraphComponent implements OnChanges, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.themeSubscription.unsubscribe();
+    if (this.themeSubscription)
+      this.themeSubscription.unsubscribe();
   }
 }
